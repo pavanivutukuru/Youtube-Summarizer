@@ -1,8 +1,10 @@
 from youtube_transcript_api import YouTubeTranscriptApi
+import re
 
 
 def extract_video_id(url):
-    return url.split("v=")[1]
+    match = re.search(r"v=([a-zA-Z0-9_-]+)", url)
+    return match.group(1)
 
 
 def get_transcript(video_url):
